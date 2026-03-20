@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="about-hero">
-  <div class="about-hero__img" style="background-image:url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="about-hero__img" style="background-image:url('{{ .Site.Params.imgHeroAbout }}')"></div>
   <div class="about-hero__overlay"></div>
   <div class="container about-hero__content">
     <span class="label">{{ i18n "about_eyebrow" }}</span>
@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="about-grid__images reveal reveal--right">
-        <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=700&q=80" alt="The Ferretti estate" loading="lazy" width="700" height="900" class="about-img about-img--top">
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80" alt="Rose garden" loading="lazy" width="400" height="400" class="about-img about-img--float">
+        <img src="{{ .Site.Params.imgAboutMain }}" alt="The Ferretti estate" loading="lazy" width="700" height="900" class="about-img about-img--top">
+        <img src="{{ .Site.Params.imgAboutFloat }}" alt="Rose garden" loading="lazy" width="400" height="400" class="about-img about-img--float">
       </div>
     </div>
   </div>

@@ -66,14 +66,14 @@
       </div>
       <div class="intro__visual reveal reveal--right">
         <div class="intro__image-wrap">
-          <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=900&q=80" alt="Corte delle Rose courtyard in spring" loading="lazy" width="900" height="700">
+          <img src="{{ .Site.Params.imgIntro }}" alt="Corte delle Rose courtyard in spring" loading="lazy" width="900" height="700">
           <div class="intro__badge" aria-hidden="true">
             <span class="intro__badge-num">Est.</span>
             <span class="intro__badge-year">{{ .Site.Params.foundedYear }}</span>
           </div>
         </div>
         <div class="intro__float-img" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80" alt="Rose garden detail" loading="lazy" width="400" height="300">
+          <img src="{{ .Site.Params.imgIntroFloat }}" alt="Rose garden detail" loading="lazy" width="400" height="300">
         </div>
       </div>
     </div>
@@ -123,14 +123,7 @@
 <!-- ═══════════ GALLERY STRIP ═══════════ -->
 <section class="gallery-strip" aria-hidden="true">
   <div class="gallery-strip__track" id="galleryStrip">
-    {{ $imgs := slice
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=600&q=70"
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=70"
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=70"
-      "https://images.unsplash.com/photo-1506377247377-2a5b3b417eff?auto=format&fit=crop&w=600&q=70"
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=70"
-      "https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=600&q=70"
-    }}
+    {{ $imgs := .Site.Params.imgStrip }}
     {{ range $imgs }}
     <div class="gallery-strip__item"><img src="{{ . }}" alt="Corte delle Rose" loading="lazy" width="600" height="400"></div>
     {{ end }}
@@ -145,7 +138,7 @@
   <div class="container">
     <div class="about-snippet__grid">
       <div class="about-snippet__media reveal">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80" alt="Lombardy countryside at golden hour" loading="lazy" width="900" height="700">
+        <img src="{{ .Site.Params.imgAboutSnippet }}" alt="Lombardy countryside at golden hour" loading="lazy" width="900" height="700">
         <div class="about-snippet__frame" aria-hidden="true"></div>
       </div>
       <div class="about-snippet__content reveal reveal--right">
