@@ -1,0 +1,218 @@
+baseURL = "https://hoteldemo.com"
+title   = "Hotel Demo"
+defaultContentLanguage          = "en"
+defaultContentLanguageInSubdir  = true
+enableRobotsTXT                 = true
+summaryLength                   = 30
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority   = 0.6
+
+# ── Languages ──────────────────────────────────────────────
+[languages.en]
+  contentDir   = "content/en"
+  languageName = "English"
+  languageCode = "en"
+  weight       = 1
+  title        = "Corte delle Rose — Boutique Hotel, Lombardy"
+  [languages.en.params]
+    description = "A romantic boutique hotel nestled in the Lombardy countryside. Five beautifully appointed rooms, rose gardens, and timeless Italian hospitality near Brescia."
+
+  [[languages.en.menus.main]]
+    name   = "Rooms"
+    url    = "/en/rooms/"
+    weight = 1
+  [[languages.en.menus.main]]
+    name   = "Experiences"
+    url    = "/en/experiences/"
+    weight = 2
+  [[languages.en.menus.main]]
+    name   = "Gallery"
+    url    = "/en/gallery/"
+    weight = 3
+  [[languages.en.menus.main]]
+    name   = "About"
+    url    = "/en/about/"
+    weight = 4
+  [[languages.en.menus.main]]
+    name   = "Contact"
+    url    = "/en/contact/"
+    weight = 5
+  [[languages.en.menus.main]]
+    name   = "Book Now"
+    url    = "/en/rooms/"
+    weight = 6
+    [languages.en.menus.main.params]
+      cta = true
+
+[languages.it]
+  contentDir   = "content/it"
+  languageName = "Italiano"
+  languageCode = "it"
+  weight       = 2
+  title        = "Corte delle Rose — Hotel Boutique, Lombardia"
+  [languages.it.params]
+    description = "Un romantico hotel boutique immerso nella campagna lombarda. Cinque camere curate, giardini di rose e autentica ospitalità italiana vicino a Brescia."
+
+  [[languages.it.menus.main]]
+    name   = "Camere"
+    url    = "/it/rooms/"
+    weight = 1
+  [[languages.it.menus.main]]
+    name   = "Esperienze"
+    url    = "/it/experiences/"
+    weight = 2
+  [[languages.it.menus.main]]
+    name   = "Galleria"
+    url    = "/it/gallery/"
+    weight = 3
+  [[languages.it.menus.main]]
+    name   = "Chi Siamo"
+    url    = "/it/about/"
+    weight = 4
+  [[languages.it.menus.main]]
+    name   = "Contatti"
+    url    = "/it/contact/"
+    weight = 5
+  [[languages.it.menus.main]]
+    name   = "Prenota"
+    url    = "/it/rooms/"
+    weight = 6
+    [languages.it.menus.main.params]
+      cta = true
+
+[languages.fr]
+  contentDir   = "content/fr"
+  languageName = "Français"
+  languageCode = "fr"
+  weight       = 3
+  title        = "Corte delle Rose — Hôtel Boutique, Lombardie"
+  [languages.fr.params]
+    description = "Un charmant hôtel boutique niché dans la campagne lombarde. Cinq chambres raffinées, jardins de roses et hospitalité italienne intemporelle près de Brescia."
+
+  [[languages.fr.menus.main]]
+    name   = "Chambres"
+    url    = "/fr/rooms/"
+    weight = 1
+  [[languages.fr.menus.main]]
+    name   = "Expériences"
+    url    = "/fr/experiences/"
+    weight = 2
+  [[languages.fr.menus.main]]
+    name   = "Galerie"
+    url    = "/fr/gallery/"
+    weight = 3
+  [[languages.fr.menus.main]]
+    name   = "À propos"
+    url    = "/fr/about/"
+    weight = 4
+  [[languages.fr.menus.main]]
+    name   = "Contact"
+    url    = "/fr/contact/"
+    weight = 5
+  [[languages.fr.menus.main]]
+    name   = "Réserver"
+    url    = "/fr/rooms/"
+    weight = 6
+    [languages.fr.menus.main.params]
+      cta = true
+
+[languages.de]
+  contentDir   = "content/de"
+  languageName = "Deutsch"
+  languageCode = "de"
+  weight       = 4
+  title        = "Corte delle Rose — Boutiquehotel, Lombardei"
+  [languages.de.params]
+    description = "Ein romantisches Boutiquehotel in der lombardischen Landschaft. Fünf liebevoll eingerichtete Zimmer, Rosengärten und zeitlose italienische Gastfreundschaft nahe Brescia."
+
+  [[languages.de.menus.main]]
+    name   = "Zimmer"
+    url    = "/de/rooms/"
+    weight = 1
+  [[languages.de.menus.main]]
+    name   = "Erlebnisse"
+    url    = "/de/experiences/"
+    weight = 2
+  [[languages.de.menus.main]]
+    name   = "Galerie"
+    url    = "/de/gallery/"
+    weight = 3
+  [[languages.de.menus.main]]
+    name   = "Über uns"
+    url    = "/de/about/"
+    weight = 4
+  [[languages.de.menus.main]]
+    name   = "Kontakt"
+    url    = "/de/contact/"
+    weight = 5
+  [[languages.de.menus.main]]
+    name   = "Buchen"
+    url    = "/de/rooms/"
+    weight = 6
+    [languages.de.menus.main.params]
+      cta = true
+
+# ── Global Params ──────────────────────────────────────────
+[params]
+
+  # ── Hotel Identity ─────────────────────────────────────────
+  hotelName        = "Hotel Demo"
+  hotelNameShort   = "Hotel Demo"
+  tagline          = "A boutique sanctuary in the Lombardy countryside."
+  foundedYear      = 1987
+  yearsOfService   = 37        # update each year, or compute from foundedYear
+  numberOfRooms    = 5
+  roseVarieties    = "40+"
+  gardenHectares   = "3ha"
+
+  # ── Contact ────────────────────────────────────────────────
+  email      = "info@hoteldemo.com"
+  phone      = "+39 030 123 4567"
+  address    = "Via delle Rose 12, 25030 Castrezzato (BS), Lombardia"
+  street     = "Via delle Rose 12"
+  city       = "Castrezzato"
+  postalCode = "25030"
+  province   = "BS"
+  region     = "Lombardia"
+  country    = "IT"
+  vatNumber  = "01234567890"
+
+  # ── Check-in / Check-out ───────────────────────────────────
+  checkIn    = "15:00"
+  checkOut   = "11:00"
+
+  # ── Social ─────────────────────────────────────────────────
+  instagram  = "https://instagram.com/hoteldemo"
+  facebook   = "https://facebook.com/hoteldemo"
+
+  # ── Legal pages ────────────────────────────────────────────
+  privacyUrl = "/privacy/"
+  termsUrl   = "/terms/"
+  cookiesUrl = "/cookies/"
+
+  # ── Stripe (replace with your real key before deploying) ───
+  stripeKey  = "pk_test_REPLACE_WITH_YOUR_STRIPE_PUBLIC_KEY"
+
+  # ── Hero Images (Unsplash URLs or local /static/ paths) ────
+  heroImage  = "https://images.unsplash.com/photo-1586105449897-20b5efeb3233?auto=format&fit=crop&w=1920&q=80"
+  heroImage2 = "https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=1920&q=80"
+  ogImage    = "https://images.unsplash.com/photo-1586105449897-20b5efeb3233?auto=format&fit=crop&w=1200&q=80"
+
+  # ── Google Maps embed URL ──────────────────────────────────
+  mapEmbed   = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22393!2d10.0!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDMwJzAwLjAiTiAxMMKwMDAnMDAuMCJF!5e0!3m2!1sen!2sit!4v1"
+
+  # ── Testimonial (change without touching templates) ────────
+  testimonialQuote  = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Corte delle Rose is everything we had forgotten travel could be."
+  testimonialAuthor = "— Sophie & Marc, Paris"
+
+  # ── Reception hours ────────────────────────────────────────
+  receptionHours = "Daily 8:00 – 21:00"

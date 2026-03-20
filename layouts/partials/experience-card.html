@@ -1,0 +1,14 @@
+<article class="exp-card reveal">
+  <a href="{{ .RelPermalink }}" class="exp-card__image-link">
+    <div class="exp-card__image">
+      <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" width="600" height="450">
+      {{ with .Params.duration }}<span class="exp-card__badge">{{ . }}</span>{{ end }}
+    </div>
+  </a>
+  <div class="exp-card__body">
+    <span class="exp-card__category label">{{ .Params.category }}</span>
+    <h3 class="exp-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="exp-card__excerpt">{{ .Summary }}</p>
+    <a href="{{ .RelPermalink }}" class="exp-card__link">{{ i18n "learn_more" }} →</a>
+  </div>
+</article>

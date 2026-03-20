@@ -1,0 +1,50 @@
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div class="container site-footer__grid">
+
+      <div class="site-footer__brand">
+        <a href="{{ relLangURL "" }}" class="footer-logo">{{ .Site.Params.hotelName }}</a>
+        <p class="site-footer__tagline">{{ .Site.Params.tagline }}</p>
+        <div class="site-footer__social">
+          <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="{{ .Site.Params.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <ul role="list">
+          {{ range .Site.Menus.main }}
+          {{ if not .Params.cta }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact">
+        <address>
+          <p>{{ .Site.Params.address }}</p>
+          <p><a href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a></p>
+          <p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
+        </address>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container site-footer__bottom-inner">
+      <span class="site-footer__copy">{{ i18n "footer_copy" }}</span>
+      <nav aria-label="Legal">
+        <a href="{{ relLangURL "privacy/" }}">{{ i18n "footer_privacy" }}</a>
+        <a href="{{ relLangURL "terms/" }}">{{ i18n "footer_terms" }}</a>
+        <a href="{{ relLangURL "cookies/" }}">{{ i18n "footer_cookies" }}</a>
+      </nav>
+      <span class="site-footer__vat">{{ i18n "footer_vat" }}</span>
+    </div>
+  </div>
+</footer>

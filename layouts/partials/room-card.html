@@ -1,0 +1,26 @@
+<article class="room-card reveal">
+  <a href="{{ .RelPermalink }}" class="room-card__image-link" tabindex="-1" aria-hidden="true">
+    <div class="room-card__image">
+      <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" width="800" height="600">
+    </div>
+  </a>
+  <div class="room-card__body">
+    <div class="room-card__meta">
+      <span class="room-card__capacity">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        {{ .Params.capacity }}
+      </span>
+      <span class="room-card__size">{{ .Params.size }}m²</span>
+    </div>
+    <h3 class="room-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="room-card__excerpt">{{ .Summary }}</p>
+    <div class="room-card__footer">
+      <div class="room-card__price">
+        <span class="room-card__from">{{ i18n "from_label" }}</span>
+        <span class="room-card__amount">€{{ .Params.price }}</span>
+        <span class="room-card__per">{{ i18n "per_night" }}</span>
+      </div>
+      <a href="{{ .RelPermalink }}" class="btn btn--outline btn--sm">{{ i18n "book_this_room" }}</a>
+    </div>
+  </div>
+</article>

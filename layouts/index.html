@@ -1,0 +1,221 @@
+{{ define "main" }}
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg">
+    <div class="hero__img hero__img--1" style="background-image:url('{{ .Site.Params.heroImage }}')"></div>
+    <div class="hero__img hero__img--2" style="background-image:url('{{ .Site.Params.heroImage2 }}')"></div>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <span class="hero__eyebrow">{{ i18n "hero_eyebrow" }}</span>
+    <h1 class="hero__title">{{ i18n "hero_title" | safeHTML }}</h1>
+    <p class="hero__subtitle">{{ i18n "hero_subtitle" }}</p>
+    <div class="hero__actions">
+      <a href="{{ relLangURL "rooms/" }}" class="btn btn--primary">{{ i18n "book_now" }}</a>
+      <a href="{{ relLangURL "rooms/" }}" class="btn btn--ghost">{{ i18n "explore_rooms" }}</a>
+    </div>
+  </div>
+  <a href="#booking" class="hero__scroll" aria-label="{{ i18n "scroll_down" }}">
+    <span>{{ i18n "scroll_down" }}</span>
+    <div class="hero__scroll-line"></div>
+  </a>
+  <!-- Decorative season counter -->
+  <div class="hero__counter" aria-hidden="true">
+    <span class="hero__counter-num">{{ .Site.Params.yearsOfService }}</span>
+    <span class="hero__counter-label">years of hospitality</span>
+  </div>
+</section>
+
+<!-- ═══════════ QUICK BOOKING BAR ═══════════ -->
+<section class="booking-bar" id="booking">
+  <div class="container">
+    <div class="booking-bar__inner">
+      <div class="booking-bar__field">
+        <label for="hb-checkin">{{ i18n "check_in" }}</label>
+        <input type="text" id="hb-checkin" placeholder="{{ i18n "select_date" }}" readonly autocomplete="off">
+      </div>
+      <div class="booking-bar__sep" aria-hidden="true"></div>
+      <div class="booking-bar__field">
+        <label for="hb-checkout">{{ i18n "check_out" }}</label>
+        <input type="text" id="hb-checkout" placeholder="{{ i18n "select_date" }}" readonly autocomplete="off">
+      </div>
+      <div class="booking-bar__sep" aria-hidden="true"></div>
+      <div class="booking-bar__field">
+        <label for="hb-guests">{{ i18n "guests_label" }}</label>
+        <select id="hb-guests">
+          <option value="1">{{ i18n "one_guest" }}</option>
+          <option value="2" selected>{{ i18n "two_guests" }}</option>
+          <option value="3">{{ i18n "three_guests" }}</option>
+        </select>
+      </div>
+      <a href="{{ relLangURL "rooms/" }}" class="btn btn--gold booking-bar__btn" id="hb-submit">{{ i18n "check_availability" }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INTRO ═══════════ -->
+<section class="intro section" id="intro">
+  <div class="container">
+    <div class="intro__grid">
+      <div class="intro__text reveal">
+        <span class="label">{{ i18n "welcome" }}</span>
+        <h2 class="intro__title">{{ i18n "intro_title" | safeHTML }}</h2>
+        <p class="intro__body">{{ i18n "intro_body" }}</p>
+        <a href="{{ relLangURL "about/" }}" class="btn btn--outline">{{ i18n "our_story" }}</a>
+      </div>
+      <div class="intro__visual reveal reveal--right">
+        <div class="intro__image-wrap">
+          <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=900&q=80" alt="Corte delle Rose courtyard in spring" loading="lazy" width="900" height="700">
+          <div class="intro__badge" aria-hidden="true">
+            <span class="intro__badge-num">Est.</span>
+            <span class="intro__badge-year">{{ .Site.Params.foundedYear }}</span>
+          </div>
+        </div>
+        <div class="intro__float-img" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80" alt="Rose garden detail" loading="lazy" width="400" height="300">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROOMS PREVIEW ═══════════ -->
+<section class="section rooms-preview" id="rooms">
+  <div class="container">
+    <div class="section__header reveal">
+      <span class="section-num" aria-hidden="true">01</span>
+      <span class="label">{{ i18n "accommodations" }}</span>
+      <h2>{{ i18n "rooms_title" | safeHTML }}</h2>
+    </div>
+    <div class="rooms-grid">
+      {{ $rooms := where .Site.RegularPages "Section" "rooms" }}
+      {{ range first 3 $rooms }}
+        {{ partial "room-card.html" . }}
+      {{ end }}
+    </div>
+    <div class="section__footer reveal">
+      <a href="{{ relLangURL "rooms/" }}" class="btn btn--outline">{{ i18n "view_all_rooms" }} ({{ .Site.Params.numberOfRooms }})</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCES ═══════════ -->
+<section class="section experiences-preview" id="experiences">
+  <div class="container">
+    <div class="section__header section__header--right reveal">
+      <span class="section-num" aria-hidden="true">02</span>
+      <span class="label">{{ i18n "curated_label" }}</span>
+      <h2>{{ i18n "experiences_title" | safeHTML }}</h2>
+    </div>
+    <div class="experiences-grid">
+      {{ $exp := where .Site.RegularPages "Section" "experiences" }}
+      {{ range first 4 $exp }}
+        {{ partial "experience-card.html" . }}
+      {{ end }}
+    </div>
+    <div class="section__footer reveal">
+      <a href="{{ relLangURL "experiences/" }}" class="btn btn--outline">{{ i18n "view_all_exp" }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY STRIP ═══════════ -->
+<section class="gallery-strip" aria-hidden="true">
+  <div class="gallery-strip__track" id="galleryStrip">
+    {{ $imgs := slice
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=600&q=70"
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=70"
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=70"
+      "https://images.unsplash.com/photo-1506377247377-2a5b3b417eff?auto=format&fit=crop&w=600&q=70"
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=70"
+      "https://images.unsplash.com/photo-1523531294919-4bcd7c65fd1d?auto=format&fit=crop&w=600&q=70"
+    }}
+    {{ range $imgs }}
+    <div class="gallery-strip__item"><img src="{{ . }}" alt="Corte delle Rose" loading="lazy" width="600" height="400"></div>
+    {{ end }}
+    {{ range $imgs }}
+    <div class="gallery-strip__item"><img src="{{ . }}" alt="Corte delle Rose" loading="lazy" width="600" height="400"></div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT SNIPPET ═══════════ -->
+<section class="about-snippet section">
+  <div class="container">
+    <div class="about-snippet__grid">
+      <div class="about-snippet__media reveal">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80" alt="Lombardy countryside at golden hour" loading="lazy" width="900" height="700">
+        <div class="about-snippet__frame" aria-hidden="true"></div>
+      </div>
+      <div class="about-snippet__content reveal reveal--right">
+        <span class="section-num" aria-hidden="true">03</span>
+        <span class="label">{{ i18n "about_eyebrow" }}</span>
+        <h2>{{ i18n "about_title" | safeHTML }}</h2>
+        <p>{{ i18n "about_body_1" }}</p>
+        <p>{{ i18n "about_body_2" }}</p>
+        <a href="{{ relLangURL "about/" }}" class="btn btn--outline">{{ i18n "read_our_story" }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ USP / AMENITIES ═══════════ -->
+<section class="usp section--sm">
+  <div class="container">
+    <div class="usp__grid">
+      <div class="usp__item reveal">
+        <div class="usp__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M6 20v-1c0-2.2 3.6-4 6-4s6 1.8 6 4v1"/></svg>
+        </div>
+        <h4>{{ i18n "usp_1_title" }}</h4>
+        <p>{{ i18n "usp_1_desc" }}</p>
+      </div>
+      <div class="usp__item reveal reveal--delay-1">
+        <div class="usp__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M8 21h8"/><path d="M12 21V9"/><path d="M5 3l7 6 7-6"/><path d="M3 9h18"/></svg>
+        </div>
+        <h4>{{ i18n "usp_2_title" }}</h4>
+        <p>{{ i18n "usp_2_desc" }}</p>
+      </div>
+      <div class="usp__item reveal reveal--delay-2">
+        <div class="usp__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h4>{{ i18n "usp_3_title" }}</h4>
+        <p>{{ i18n "usp_3_desc" }}</p>
+      </div>
+      <div class="usp__item reveal reveal--delay-3">
+        <div class="usp__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </div>
+        <h4>{{ i18n "usp_4_title" }}</h4>
+        <p>{{ i18n "usp_4_desc" }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIAL ═══════════ -->
+<section class="testimonial">
+  <div class="container">
+    <div class="testimonial__inner reveal">
+      <div class="testimonial__ornament" aria-hidden="true">"</div>
+      <blockquote class="testimonial__text">{{ i18n "testimonial_quote" }}</blockquote>
+      <cite class="testimonial__author">{{ i18n "testimonial_author" }}</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA BANNER ═══════════ -->
+<section class="cta-banner">
+  <div class="cta-banner__bg" style="background-image:url('{{ .Site.Params.heroImage2 }}')"></div>
+  <div class="cta-banner__overlay"></div>
+  <div class="container cta-banner__content reveal">
+    <h2>{{ i18n "cta_title" }}</h2>
+    <p>{{ i18n "cta_subtitle" }}</p>
+    <a href="{{ relLangURL "rooms/" }}" class="btn btn--primary">{{ i18n "book_now" }}</a>
+  </div>
+</section>
+
+{{ end }}

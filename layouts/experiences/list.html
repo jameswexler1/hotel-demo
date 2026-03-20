@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="page-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417eff?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <span class="label">{{ i18n "curated_label" }}</span>
+    <h1>{{ i18n "exp_page_title" }}</h1>
+    <p>{{ i18n "exp_page_subtitle" }}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="experiences-grid experiences-grid--full">
+      {{ range .Site.RegularPages }}
+        {{ if eq .Section "experiences" }}
+          {{ partial "experience-card.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

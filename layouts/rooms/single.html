@@ -1,0 +1,108 @@
+{{ define "main" }}
+<!-- Room Hero -->
+<section class="room-hero">
+  <div class="room-hero__gallery">
+    {{ range $i, $img := .Params.images }}
+    <a href="{{ $img }}" class="glightbox room-hero__thumb{{ if eq $i 0 }} room-hero__thumb--main{{ end }}" data-gallery="room-gallery" data-title="{{ $.Title }}">
+      <img src="{{ $img }}" alt="{{ $.Title }} — photo {{ add $i 1 }}" loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}" width="{{ if eq $i 0 }}1200{{ else }}600{{ end }}" height="{{ if eq $i 0 }}800{{ else }}400{{ end }}">
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Room Detail -->
+<section class="section room-detail">
+  <div class="container">
+    <div class="room-detail__grid">
+
+      <!-- Content -->
+      <div class="room-detail__content">
+        <span class="label">{{ i18n "accommodations" }}</span>
+        <h1 class="room-detail__title">{{ .Title }}</h1>
+        <div class="room-detail__specs">
+          <div class="room-spec">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            {{ .Params.capacity }} {{ i18n "guests_label" }}
+          </div>
+          <div class="room-spec">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            {{ .Params.size }}m²
+          </div>
+        </div>
+        <div class="prose room-detail__prose">{{ .Content }}</div>
+
+        <div class="room-detail__amenities">
+          <h3>{{ i18n "amenities_label" }}</h3>
+          <ul class="amenities-list">
+            {{ range .Params.amenities }}
+            <li class="amenities-list__item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ . }}
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Booking Card -->
+      <aside class="room-booking-card" id="roomBookingCard">
+        <div class="room-booking-card__price">
+          <span>{{ i18n "from_label" }}</span>
+          <strong>€{{ .Params.price }}</strong>
+          <span>{{ i18n "per_night" }}</span>
+        </div>
+        <hr class="room-booking-card__divider">
+        <div class="room-booking-card__dates">
+          <div class="booking-drawer__field">
+            <label for="rc-checkin">{{ i18n "check_in" }}</label>
+            <input type="text" id="rc-checkin" placeholder="{{ i18n "select_date" }}" readonly>
+          </div>
+          <div class="booking-drawer__field">
+            <label for="rc-checkout">{{ i18n "check_out" }}</label>
+            <input type="text" id="rc-checkout" placeholder="{{ i18n "select_date" }}" readonly>
+          </div>
+          <div class="booking-drawer__field">
+            <label for="rc-guests">{{ i18n "guests_label" }}</label>
+            <select id="rc-guests">
+              {{ range seq 1 .Params.capacity }}
+              <option value="{{ . }}">{{ . }} {{ if eq . 1 }}{{ i18n "one_guest" }}{{ else }}{{ i18n "two_guests" }}{{ end }}</option>
+              {{ end }}
+            </select>
+          </div>
+        </div>
+        <div class="room-booking-card__summary" id="rcSummary" hidden>
+          <div class="room-booking-card__total">
+            <span>{{ i18n "total_label" }}</span>
+            <strong id="rcTotal">—</strong>
+          </div>
+        </div>
+        <button class="btn btn--gold btn--full" id="openBookingDrawer"
+          data-room-id="{{ .Params.roomId }}"
+          data-room-name="{{ .Title }}"
+          data-room-price="{{ .Params.price }}"
+          data-room-image="{{ index .Params.images 0 }}"
+          data-room-capacity="{{ .Params.capacity }}">
+          {{ i18n "book_this_room" }}
+        </button>
+        <p class="room-booking-card__note">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          {{ i18n "secure_stripe" }}
+        </p>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- Room-specific JS data -->
+<script>
+  window.CDR.currentRoom = {
+    id:       "{{ .Params.roomId }}",
+    name:     "{{ .Title }}",
+    price:    {{ .Params.price }},
+    capacity: {{ .Params.capacity }},
+    image:    "{{ index .Params.images 0 }}"
+  };
+  window.CDR.currentRoomBlocked = window.CDR.blockedDates["{{ .Params.roomId }}"] || [];
+</script>
+{{ end }}

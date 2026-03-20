@@ -1,0 +1,55 @@
+<header class="site-header" id="site-header">
+  <div class="site-header__inner">
+
+    <!-- Logo -->
+    <a href="{{ relLangURL "" }}" class="site-header__logo" aria-label="{{ .Site.Params.hotelName }} — Home">
+      <span class="logo-text">{{ .Site.Params.hotelName }}</span>
+    </a>
+
+    <!-- Main Nav -->
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="site-nav__list" role="list">
+        {{ range .Site.Menus.main }}
+        <li class="site-nav__item">
+          {{ if .Params.cta }}
+          <a href="{{ .URL }}" class="btn btn--nav-cta">{{ .Name }}</a>
+          {{ else }}
+          <a href="{{ .URL }}" class="site-nav__link{{ if eq $.RelPermalink .URL }} is-active{{ end }}">{{ .Name }}</a>
+          {{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher" aria-label="Language selector">
+      {{ range .AllTranslations }}
+      <a href="{{ .RelPermalink }}" class="lang-switcher__item{{ if eq $.Lang .Lang }} is-active{{ end }}" lang="{{ .Lang }}" hreflang="{{ .Lang }}">
+        {{ upper .Lang }}
+      </a>
+      {{ end }}
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <ul role="list">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}" class="mobile-nav__link">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+    <div class="mobile-nav__lang">
+      {{ range .AllTranslations }}
+      <a href="{{ .RelPermalink }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a>
+      {{ end }}
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,78 @@
+{{ define "main" }}
+<section class="page-hero page-hero--sm">
+  <div class="container">
+    <span class="label">{{ i18n "contact_title" }}</span>
+    <h1>{{ i18n "contact_subtitle" }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Contact Info -->
+      <div class="contact-info reveal">
+        <div class="contact-info__item">
+          <h4>{{ i18n "contact_address" }}</h4>
+          <address>{{ .Site.Params.address }}</address>
+        </div>
+        <div class="contact-info__item">
+          <h4>{{ i18n "contact_phone" }}</h4>
+          <a href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
+        </div>
+        <div class="contact-info__item">
+          <h4>{{ i18n "contact_email_l" }}</h4>
+          <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+        </div>
+        <div class="contact-info__item">
+          <h4>{{ i18n "contact_hours" }}</h4>
+          <p>{{ i18n "hours_value" }}</p>
+        </div>
+        <div class="contact-checkin">
+          <div>
+            <span>Check-in</span>
+            <strong>{{ .Site.Params.checkIn }}</strong>
+          </div>
+          <div>
+            <span>Check-out</span>
+            <strong>{{ .Site.Params.checkOut }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Form -->
+      <div class="contact-form-wrap reveal reveal--right">
+        <h3>{{ i18n "send_message" }}</h3>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="booking-drawer__field">
+            <label for="cf-name">{{ i18n "your_name" }}</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div class="booking-drawer__field">
+            <label for="cf-email">{{ i18n "your_email" }}</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="booking-drawer__field">
+            <label for="cf-message">{{ i18n "your_message" }}</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold">{{ i18n "send_btn" }}</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="contact-map">
+  <iframe
+    src="{{ .Site.Params.mapEmbed }}"
+    width="100%" height="480"
+    style="border:0; display:block;"
+    allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Corte delle Rose location">
+  </iframe>
+</section>
+{{ end }}

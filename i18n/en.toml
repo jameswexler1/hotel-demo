@@ -1,0 +1,236 @@
+# Navigation
+[nav_rooms]
+other = "Rooms"
+[nav_experiences]
+other = "Experiences"
+[nav_gallery]
+other = "Gallery"
+[nav_about]
+other = "About"
+[nav_contact]
+other = "Contact"
+[book_now]
+other = "Book Your Stay"
+
+# Hero
+[hero_eyebrow]
+other = "Lombardia, Italia"
+[hero_title]
+other = "Where Time Slows,\nRoses Bloom"
+[hero_subtitle]
+other = "A sanctuary of five rooms in the Lombardy countryside — for those who seek stillness, beauty, and the unhurried pleasures of Italian life."
+[scroll_down]
+other = "Discover"
+[explore_rooms]
+other = "Our Rooms"
+
+# Booking bar
+[check_in]
+other = "Check-in"
+[check_out]
+other = "Check-out"
+[guests_label]
+other = "Guests"
+[select_date]
+other = "Select date"
+[check_availability]
+other = "Check Availability"
+[one_guest]
+other = "1 Guest"
+[two_guests]
+other = "2 Guests"
+[three_guests]
+other = "3 Guests"
+
+# Home sections
+[welcome]
+other = "Welcome"
+[intro_title]
+other = "A Courtyard Born\nFrom Roses"
+[intro_body]
+other = "Hidden behind stone walls draped in climbing roses, Corte delle Rose has sheltered travellers since 1987. Our five rooms blend centuries-old architecture with discreet modern comfort — each one different, each one a private world."
+[our_story]
+other = "Our Story"
+[read_our_story]
+other = "Read our story"
+
+[accommodations]
+other = "Accommodations"
+[rooms_title]
+other = "Five Rooms,\nFive Worlds"
+[view_all_rooms]
+other = "View all rooms"
+[from_label]
+other = "from"
+[per_night]
+other = "/ night"
+
+[curated_label]
+other = "Curated Experiences"
+[experiences_title]
+other = "Life Beyond\nthe Courtyard"
+[view_all_exp]
+other = "Explore all experiences"
+
+[about_eyebrow]
+other = "Our Story"
+[about_title]
+other = "Thirty-Seven Years of\nItalian Hospitality"
+[about_body_1]
+other = "Corte delle Rose began as a farmhouse — a corte, in the Lombard dialect — belonging to the Ferretti family. When Maria and Luca Ferretti opened their doors to guests in 1987, they asked a single question: how would we want to be welcomed?"
+[about_body_2]
+other = "The answer still guides us. Fresh flowers from the garden in every room. Breakfast served when you wake, not when we decide. An unhurried pace. And always, the roses."
+
+# USPs
+[usp_1_title]
+other = "Rose Gardens"
+[usp_1_desc]
+other = "Three acres of gardens with over 40 varieties of heritage roses, in bloom from May to October."
+[usp_2_title]
+other = "Franciacorta Wine"
+[usp_2_desc]
+other = "We sit at the heart of Italy's finest sparkling wine country. Guided tastings at our partner estates."
+[usp_3_title]
+other = "Cycling Routes"
+[usp_3_desc]
+other = "Bikes available for guests. Curated routes through vineyards, villages, and along the lake."
+[usp_4_title]
+other = "Cucina di Nonna"
+[usp_4_desc]
+other = "Weekly cooking classes with our resident cook, Maria. Handmade pasta, risotto, and seasonal recipes."
+
+# Testimonial
+[testimonial_quote]
+other = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Corte delle Rose is everything we had forgotten travel could be."
+[testimonial_author]
+other = "— Sophie & Marc, Paris"
+
+# CTA
+[cta_title]
+other = "Reserve Your Room"
+[cta_subtitle]
+other = "Only five rooms. Book early to avoid disappointment."
+
+# Rooms page
+[rooms_page_title]
+other = "Our Rooms"
+[rooms_page_subtitle]
+other = "Five intimate rooms, each with its own character — garden views, private terraces, and the quiet luxury of genuine Italian hospitality."
+[amenities_label]
+other = "Amenities"
+[capacity_label]
+other = "Capacity"
+[size_label]
+other = "Room size"
+[book_this_room]
+other = "Book This Room"
+[from_price]
+other = "From"
+
+# Experiences page
+[exp_page_title]
+other = "Experiences"
+[exp_page_subtitle]
+other = "From vine to table, from saddle to shoreline — we curate moments that turn a stay into a memory."
+[learn_more]
+other = "Learn more"
+[duration_label]
+other = "Duration"
+[price_label]
+other = "Price"
+[book_experience]
+other = "Book this experience"
+
+# Gallery
+[gallery_title]
+other = "Gallery"
+[gallery_subtitle]
+other = "A portrait of Corte delle Rose through the seasons."
+
+# About
+[about_page_title]
+other = "Our Story"
+[about_page_subtitle]
+other = "Three decades of hospitality, roses, and the art of welcoming strangers as family."
+
+# Contact
+[contact_title]
+other = "Find Us"
+[contact_subtitle]
+other = "We are easily found, and happy to be reached."
+[contact_address]
+other = "Address"
+[contact_phone]
+other = "Phone"
+[contact_email_l]
+other = "Email"
+[contact_hours]
+other = "Reception Hours"
+[hours_value]
+other = "Daily 8:00 – 21:00"
+[send_message]
+other = "Send a Message"
+[your_name]
+other = "Your name"
+[your_email]
+other = "Your email"
+[your_message]
+other = "Your message"
+[send_btn]
+other = "Send Message"
+
+# Booking drawer
+[booking_title]
+other = "Reserve"
+[step_dates]
+other = "Dates"
+[step_details]
+other = "Details"
+[step_payment]
+other = "Payment"
+[nights_label]
+other = "nights"
+[night_label]
+other = "night"
+[total_label]
+other = "Total"
+[first_name]
+other = "First name"
+[last_name]
+other = "Last name"
+[email_label]
+other = "Email address"
+[phone_label]
+other = "Phone number"
+[requests_label]
+other = "Special requests"
+[requests_placeholder]
+other = "Dietary requirements, preferred room setup, arrival time..."
+[pay_btn]
+other = "Pay Securely"
+[processing]
+other = "Processing…"
+[booking_success_title]
+other = "Booking Confirmed"
+[booking_success_body]
+other = "Thank you! A confirmation email and PDF voucher are on their way to your inbox."
+[download_voucher]
+other = "Download Voucher"
+[secure_stripe]
+other = "Payments secured by Stripe"
+
+# Footer
+[footer_tagline]
+other = "A boutique sanctuary in the Lombardy countryside."
+[footer_legal]
+other = "Legal"
+[footer_privacy]
+other = "Privacy Policy"
+[footer_terms]
+other = "Terms & Conditions"
+[footer_cookies]
+other = "Cookie Policy"
+[footer_vat]
+other = "P. IVA {{ .Site.Params.vatNumber }}"
+[footer_copy]
+other = "© 2025 Corte delle Rose. All rights reserved."

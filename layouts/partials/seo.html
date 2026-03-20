@@ -1,0 +1,56 @@
+<!-- hreflang -->
+{{ range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:title"       content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:url"         content="{{ .Permalink }}">
+<meta property="og:image"       content="{{ .Site.Params.ogImage }}">
+<meta property="og:locale"      content="{{ .Lang }}">
+<meta property="og:site_name"   content="{{ .Site.Params.hotelName }}">
+
+<!-- Twitter -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="twitter:image"       content="{{ .Site.Params.ogImage }}">
+
+<!-- JSON-LD Schema -->
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "{{ .Site.Params.hotelName }}",
+  "description": "{{ .Site.Params.description }}",
+  "url": "{{ .Site.BaseURL }}",
+  "image": "{{ .Site.Params.ogImage }}",
+  "telephone": "{{ .Site.Params.phone }}",
+  "email": "{{ .Site.Params.email }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ .Site.Params.street }}",
+    "addressLocality": "{{ .Site.Params.city }}",
+    "addressRegion": "{{ .Site.Params.region }}",
+    "postalCode": "{{ .Site.Params.postalCode }}",
+    "addressCountry": "{{ .Site.Params.country }}"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 45.5, "longitude": 10.0 },
+  "checkinTime": "{{ .Site.Params.checkIn }}",
+  "checkoutTime": "{{ .Site.Params.checkOut }}",
+  "priceRange": "€€",
+  "starRating": { "@type": "Rating", "ratingValue": "4" },
+  "numberOfRooms": 5,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Garden", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Breakfast", "value": true }
+  ],
+  "sameAs": ["{{ .Site.Params.instagram }}", "{{ .Site.Params.facebook }}"]
+}
+</script>
+{{ end }}

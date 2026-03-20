@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="exp-hero">
+  <div class="exp-hero__img" style="background-image:url('{{ .Params.image }}')"></div>
+  <div class="exp-hero__overlay"></div>
+  <div class="container exp-hero__content">
+    <span class="label">{{ .Params.category }}</span>
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="container exp-detail">
+    <div class="exp-detail__sidebar">
+      {{ with .Params.duration }}<div class="exp-meta"><span>{{ i18n "duration_label" }}</span><strong>{{ . }}</strong></div>{{ end }}
+      {{ with .Params.price }}<div class="exp-meta"><span>{{ i18n "price_label" }}</span><strong>{{ . }}</strong></div>{{ end }}
+      {{ with .Params.meeting }}<div class="exp-meta"><span>Meeting point</span><strong>{{ . }}</strong></div>{{ end }}
+      <a href="{{ relLangURL "rooms/" }}" class="btn btn--gold btn--full">{{ i18n "book_now" }}</a>
+    </div>
+    <div class="prose exp-detail__content">{{ .Content }}</div>
+  </div>
+</section>
+{{ end }}

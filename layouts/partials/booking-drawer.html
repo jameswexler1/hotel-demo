@@ -1,0 +1,115 @@
+<!-- Booking Drawer Overlay -->
+<div class="booking-overlay" id="bookingOverlay" aria-hidden="true"></div>
+
+<aside class="booking-drawer" id="bookingDrawer" role="dialog" aria-modal="true" aria-label="{{ i18n "booking_title" }}" aria-hidden="true">
+  <div class="booking-drawer__inner">
+
+    <!-- Header -->
+    <div class="booking-drawer__header">
+      <div class="booking-drawer__steps">
+        <span class="booking-step is-active" data-step="1">01 {{ i18n "step_dates" }}</span>
+        <span class="booking-step" data-step="2">02 {{ i18n "step_details" }}</span>
+        <span class="booking-step" data-step="3">03 {{ i18n "step_payment" }}</span>
+      </div>
+      <button class="booking-drawer__close" id="bookingClose" aria-label="Close booking">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Room Summary Banner -->
+    <div class="booking-drawer__room-banner" id="bookingRoomBanner">
+      <img src="" alt="" id="bookingRoomImg">
+      <div>
+        <strong id="bookingRoomName">—</strong>
+        <span id="bookingRoomPrice" class="booking-price-display"></span>
+      </div>
+    </div>
+
+    <!-- Step 1: Dates & Guests -->
+    <div class="booking-step-panel is-active" id="stepPanel1">
+      <div class="booking-drawer__field">
+        <label for="bd-checkin">{{ i18n "check_in" }}</label>
+        <input type="text" id="bd-checkin" placeholder="{{ i18n "select_date" }}" readonly autocomplete="off">
+      </div>
+      <div class="booking-drawer__field">
+        <label for="bd-checkout">{{ i18n "check_out" }}</label>
+        <input type="text" id="bd-checkout" placeholder="{{ i18n "select_date" }}" readonly autocomplete="off">
+      </div>
+      <div class="booking-drawer__field">
+        <label for="bd-guests">{{ i18n "guests_label" }}</label>
+        <select id="bd-guests">
+          <option value="1">{{ i18n "one_guest" }}</option>
+          <option value="2" selected>{{ i18n "two_guests" }}</option>
+          <option value="3">{{ i18n "three_guests" }}</option>
+        </select>
+      </div>
+      <div class="booking-summary" id="bookingSummary" hidden>
+        <div class="booking-summary__line">
+          <span id="summaryNights"></span>
+          <span id="summaryTotal"></span>
+        </div>
+      </div>
+      <button class="btn btn--gold btn--full" id="stepNextDates" disabled>{{ i18n "check_availability" }} →</button>
+    </div>
+
+    <!-- Step 2: Guest Details -->
+    <div class="booking-step-panel" id="stepPanel2" hidden>
+      <div class="booking-drawer__row">
+        <div class="booking-drawer__field">
+          <label for="bd-firstname">{{ i18n "first_name" }}</label>
+          <input type="text" id="bd-firstname" autocomplete="given-name" required>
+        </div>
+        <div class="booking-drawer__field">
+          <label for="bd-lastname">{{ i18n "last_name" }}</label>
+          <input type="text" id="bd-lastname" autocomplete="family-name" required>
+        </div>
+      </div>
+      <div class="booking-drawer__field">
+        <label for="bd-email">{{ i18n "email_label" }}</label>
+        <input type="email" id="bd-email" autocomplete="email" required>
+      </div>
+      <div class="booking-drawer__field">
+        <label for="bd-phone">{{ i18n "phone_label" }}</label>
+        <input type="tel" id="bd-phone" autocomplete="tel">
+      </div>
+      <div class="booking-drawer__field">
+        <label for="bd-requests">{{ i18n "requests_label" }}</label>
+        <textarea id="bd-requests" rows="3" placeholder="{{ i18n "requests_placeholder" }}"></textarea>
+      </div>
+      <div class="booking-drawer__nav">
+        <button class="btn btn--outline" id="stepBackDates">← {{ i18n "step_dates" }}</button>
+        <button class="btn btn--gold" id="stepNextDetails">{{ i18n "step_payment" }} →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Payment -->
+    <div class="booking-step-panel" id="stepPanel3" hidden>
+      <div class="booking-final-summary" id="bookingFinalSummary"></div>
+      <div class="booking-drawer__field">
+        <label>{{ i18n "step_payment" }}</label>
+        <div id="stripe-card-element" class="stripe-element"></div>
+        <div id="stripe-card-errors" class="stripe-error" role="alert"></div>
+      </div>
+      <p class="booking-secure-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        {{ i18n "secure_stripe" }}
+      </p>
+      <div class="booking-drawer__nav">
+        <button class="btn btn--outline" id="stepBackDetails">← {{ i18n "step_details" }}</button>
+        <button class="btn btn--gold" id="payBtn">
+          <span id="payBtnText">{{ i18n "pay_btn" }}</span>
+          <span id="payBtnLoading" hidden>{{ i18n "processing" }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Success State -->
+    <div class="booking-success" id="bookingSuccess" hidden>
+      <div class="booking-success__icon">✓</div>
+      <h3>{{ i18n "booking_success_title" }}</h3>
+      <p>{{ i18n "booking_success_body" }}</p>
+      <button class="btn btn--gold" id="downloadVoucher">{{ i18n "download_voucher" }}</button>
+    </div>
+
+  </div>
+</aside>
