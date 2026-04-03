@@ -5,7 +5,7 @@ category: "Cooking"
 duration: "4 hours"
 price: "€85 per person"
 meeting: "Hotel kitchen, 10:30 AM"
-image: "https://images.unsplash.com/photo-1571897349842-33c89424de2d?auto=format&fit=crop&w=800&q=80"
+image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80"
 weight: 3
 ---
 

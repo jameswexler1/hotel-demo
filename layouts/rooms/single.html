@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!-- Room Hero -->
-<section class="room-hero">
+<section class="room-hero" id="hero">
   <div class="room-hero__gallery">
     {{ range $i, $img := .Params.images }}
     <a href="{{ $img }}" class="glightbox room-hero__thumb{{ if eq $i 0 }} room-hero__thumb--main{{ end }}" data-gallery="room-gallery" data-title="{{ $.Title }}">
@@ -52,30 +52,7 @@
           <span>{{ i18n "per_night" }}</span>
         </div>
         <hr class="room-booking-card__divider">
-        <div class="room-booking-card__dates">
-          <div class="booking-drawer__field">
-            <label for="rc-checkin">{{ i18n "check_in" }}</label>
-            <input type="text" id="rc-checkin" placeholder="{{ i18n "select_date" }}" readonly>
-          </div>
-          <div class="booking-drawer__field">
-            <label for="rc-checkout">{{ i18n "check_out" }}</label>
-            <input type="text" id="rc-checkout" placeholder="{{ i18n "select_date" }}" readonly>
-          </div>
-          <div class="booking-drawer__field">
-            <label for="rc-guests">{{ i18n "guests_label" }}</label>
-            <select id="rc-guests">
-              {{ range seq 1 .Params.capacity }}
-              <option value="{{ . }}">{{ . }} {{ if eq . 1 }}{{ i18n "one_guest" }}{{ else }}{{ i18n "two_guests" }}{{ end }}</option>
-              {{ end }}
-            </select>
-          </div>
-        </div>
-        <div class="room-booking-card__summary" id="rcSummary" hidden>
-          <div class="room-booking-card__total">
-            <span>{{ i18n "total_label" }}</span>
-            <strong id="rcTotal">—</strong>
-          </div>
-        </div>
+
         <button class="btn btn--gold btn--full" id="openBookingDrawer"
           data-room-id="{{ .Params.roomId }}"
           data-room-name="{{ .Title }}"
