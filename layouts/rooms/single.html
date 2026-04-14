@@ -73,6 +73,7 @@
 
 <!-- Room-specific JS data -->
 <script>
+  window.CDR = window.CDR || {};
   window.CDR.currentRoom = {
     id:       "{{ .Params.roomId }}",
     name:     "{{ .Title }}",
@@ -80,6 +81,5 @@
     capacity: {{ .Params.capacity }},
     image:    "{{ index .Params.images 0 }}"
   };
-  window.CDR.currentRoomBlocked = window.CDR.blockedDates["{{ .Params.roomId }}"] || [];
 </script>
 {{ end }}

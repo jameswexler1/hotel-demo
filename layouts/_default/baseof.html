@@ -22,13 +22,56 @@
 
   <!-- Inline Config -->
   <script>
-    window.CDR = {
-      lang: "{{ .Lang }}",
-      stripeKey: "{{ .Site.Params.stripeKey }}",
-      apiBase: "/.netlify/functions",
-      blockedDates: {{ .Site.Data.blockedDates | jsonify }},
-      rooms: {{ .Site.Data.rooms | jsonify }}
-    };
+    (function () {
+      function pad(value) {
+        return String(value).padStart(2, '0');
+      }
+
+      function iso(date) {
+        return date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
+      }
+
+      function normalizeBlockedDates(map) {
+        const today = new Date();
+        const startOfToday = new Date(Date.UTC(
+          today.getUTCFullYear(),
+          today.getUTCMonth(),
+          today.getUTCDate()
+        ));
+
+        return Object.fromEntries(Object.entries(map || {}).map(function ([roomId, dates]) {
+          const normalized = Array.from(new Set((dates || []).map(function (value) {
+            if (typeof value !== 'string') return null;
+            const parts = value.split('-').map(Number);
+            if (parts.length !== 3) return null;
+
+            var year = startOfToday.getUTCFullYear();
+            var candidate = new Date(Date.UTC(year, parts[1] - 1, parts[2]));
+
+            while (candidate < startOfToday) {
+              year += 1;
+              candidate = new Date(Date.UTC(year, parts[1] - 1, parts[2]));
+            }
+
+            return iso(candidate);
+          }).filter(Boolean))).sort();
+
+          return [roomId, normalized];
+        }));
+      }
+
+      window.CDR = Object.assign(window.CDR || {}, {
+        lang: "{{ .Lang }}",
+        stripeKey: "{{ .Site.Params.stripeKey }}",
+        apiBase: "/.netlify/functions",
+        blockedDates: normalizeBlockedDates({{ .Site.Data.blockedDates | jsonify }}),
+        rooms: {{ .Site.Data.rooms | jsonify }}
+      });
+
+      if (window.CDR.currentRoom) {
+        window.CDR.currentRoomBlocked = window.CDR.blockedDates[window.CDR.currentRoom.id] || [];
+      }
+    })();
   </script>
 </body>
 </html>

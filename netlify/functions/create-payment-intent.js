@@ -1,3 +1,5 @@
+const { getBookingQuote } = require('./_booking-utils');
+
 /**
  * Netlify Function: create-payment-intent
  * Creates a Stripe PaymentIntent and returns the client secret.
@@ -21,14 +23,25 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
-  const { roomId, roomName, checkin, checkout, nights, guests, total, email, firstName, lastName, lang } = body;
+  const { roomId, roomName, checkin, checkout, guests, email, firstName, lastName, lang } = body;
 
   // Basic validation
-  if (!roomId || !checkin || !checkout || !total || !email) {
+  if (!roomId || !checkin || !checkout || !email) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Missing required booking fields' }) };
   }
 
-  const totalCents = Math.round(parseFloat(total) * 100);
+  let quote;
+  try {
+    quote = getBookingQuote({ roomId, checkin, checkout, guests });
+  } catch (err) {
+    return {
+      statusCode: err.statusCode || 400,
+      body: JSON.stringify({ error: err.message || 'Invalid booking request' })
+    };
+  }
+
+  const safeRoomName = typeof roomName === 'string' && roomName.trim() ? roomName.trim() : quote.room.id;
+  const totalCents = Math.round(quote.total * 100);
   if (totalCents < 50) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Amount too small' }) };
   }
@@ -48,14 +61,14 @@ exports.handler = async function (event) {
         amount:            String(totalCents),
         currency:          'eur',
         receipt_email:     email,
-        description:       `Corte delle Rose — ${roomName} (${checkin} → ${checkout})`,
+        description:       `Corte delle Rose — ${safeRoomName} (${checkin} → ${checkout})`,
         'metadata[bookingRef]':   bookingRef,
         'metadata[roomId]':       roomId,
-        'metadata[roomName]':     roomName,
+        'metadata[roomName]':     safeRoomName,
         'metadata[checkin]':      checkin,
         'metadata[checkout]':     checkout,
-        'metadata[nights]':       String(nights),
-        'metadata[guests]':       String(guests),
+        'metadata[nights]':       String(quote.nights),
+        'metadata[guests]':       String(quote.guests),
         'metadata[guestName]':    `${firstName} ${lastName}`,
         'metadata[guestEmail]':   email,
         'metadata[lang]':         lang || 'en'

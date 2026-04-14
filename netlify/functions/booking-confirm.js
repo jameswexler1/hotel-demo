@@ -11,6 +11,17 @@
 
 const crypto = require('crypto');
 
+function safeEqualHex(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+
+  const aBuf = Buffer.from(a, 'hex');
+  const bBuf = Buffer.from(b, 'hex');
+
+  if (aBuf.length === 0 || bBuf.length === 0 || aBuf.length !== bBuf.length) return false;
+
+  return crypto.timingSafeEqual(aBuf, bBuf);
+}
+
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method not allowed' };
@@ -18,29 +29,50 @@ exports.handler = async function (event) {
 
   const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
   const RESEND_KEY     = process.env.RESEND_API_KEY;
-  const HOTEL_EMAIL    = process.env.HOTEL_EMAIL || 'info@cortedellrose.com';
+  const HOTEL_EMAIL    = process.env.HOTEL_EMAIL || 'info@hoteldemo.com';
+  const FROM_EMAIL     = process.env.FROM_EMAIL || 'bookings@hoteldemo.com';
 
   // ── Verify Stripe signature ───────────────────────────────
-  const sig       = event.headers['stripe-signature'];
+  const sig       = event.headers['stripe-signature'] || event.headers['Stripe-Signature'];
   const rawBody   = event.body;
 
-  if (WEBHOOK_SECRET && sig) {
-    try {
-      const parts     = sig.split(',').reduce((acc, p) => { const [k,v]=p.split('='); acc[k]=v; return acc; }, {});
-      const timestamp = parts['t'];
-      const expected  = crypto.createHmac('sha256', WEBHOOK_SECRET)
-                               .update(`${timestamp}.${rawBody}`)
-                               .digest('hex');
-      if (expected !== parts['v1']) {
-        return { statusCode: 400, body: 'Invalid signature' };
-      }
-      const now = Math.floor(Date.now() / 1000);
-      if (Math.abs(now - parseInt(timestamp)) > 300) {
-        return { statusCode: 400, body: 'Request too old' };
-      }
-    } catch (e) {
-      return { statusCode: 400, body: 'Signature verification failed' };
+  if (!WEBHOOK_SECRET) {
+    return { statusCode: 500, body: 'Missing STRIPE_WEBHOOK_SECRET' };
+  }
+
+  if (!sig) {
+    return { statusCode: 400, body: 'Missing stripe-signature header' };
+  }
+
+  try {
+    const parts = sig.split(',').reduce((acc, part) => {
+      const [key, value] = part.split('=');
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(value);
+      return acc;
+    }, {});
+    const timestamp = parts.t && parts.t[0];
+    const signatures = parts.v1 || [];
+
+    if (!timestamp || signatures.length === 0) {
+      return { statusCode: 400, body: 'Invalid signature header' };
     }
+
+    const expected = crypto.createHmac('sha256', WEBHOOK_SECRET)
+      .update(`${timestamp}.${rawBody}`)
+      .digest('hex');
+
+    const isValid = signatures.some((value) => safeEqualHex(expected, value));
+    if (!isValid) {
+      return { statusCode: 400, body: 'Invalid signature' };
+    }
+
+    const now = Math.floor(Date.now() / 1000);
+    if (Math.abs(now - parseInt(timestamp, 10)) > 300) {
+      return { statusCode: 400, body: 'Request too old' };
+    }
+  } catch (e) {
+    return { statusCode: 400, body: 'Signature verification failed' };
   }
 
   let stripeEvent;
@@ -95,7 +127,7 @@ exports.handler = async function (event) {
           <tr style="background:#2D3B2C"><td style="padding:14px;color:#C9846E;letter-spacing:1px;font-size:11px;text-transform:uppercase;border-radius:2px 0 0 2px">Total Paid</td><td style="padding:14px;color:#F7F1E8;font-size:20px;font-style:italic;text-align:right;border-radius:0 2px 2px 0">${totalEur}</td></tr>
         </table>
       </div>
-      <p style="color:#9A9186;font-size:13px;line-height:1.8">Via delle Rose 12, 25030 Castrezzato (BS), Lombardia<br>+39 030 123 4567 · info@cortedellrose.com</p>
+      <p style="color:#9A9186;font-size:13px;line-height:1.8">Via delle Rose 12, 25030 Castrezzato (BS), Lombardia<br>+39 030 123 4567 · info@hoteldemo.com</p>
       <p style="font-family:'Georgia',serif;font-style:italic;color:#C9846E;font-size:18px;margin-top:32px">Ci vediamo presto — see you soon.</p>
     </div>
   </div>
@@ -121,12 +153,18 @@ exports.handler = async function (event) {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'Corte delle Rose <bookings@cortedellrose.com>',
+        from: `Corte delle Rose <${FROM_EMAIL}>`,
         to:   mail.to,
         subject: mail.subject,
         html:    mail.html
       })
-    }).then(r => r.json())
+    }).then(async (response) => {
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(`Resend ${response.status}: ${JSON.stringify(payload)}`);
+      }
+      return payload;
+    })
   ));
 
   results.forEach((r, i) => {
