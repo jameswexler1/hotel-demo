@@ -289,6 +289,7 @@ p  { line-height: 1.75; color: var(--olive-mid); }
   gap: var(--space-sm);
   padding: var(--space-xl);
 }
+.mobile-nav.is-open { display: flex; }
 .mobile-nav__link {
   font-family: var(--font-display);
   font-size: clamp(2rem, 6vw, 3rem);
