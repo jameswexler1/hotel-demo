@@ -1,5 +1,5 @@
 /* ============================================================
-   CORTE DELLE ROSE — Booking JS
+   HOTEL BOUTIQUE — Booking JS
    Drawer, flatpickr, Stripe Elements, voucher PDF
    ============================================================ */
 
@@ -437,7 +437,7 @@
       doc.setFont('helvetica', 'italic');
       doc.setFontSize(28);
       doc.setTextColor(247, 241, 232);
-      doc.text('Corte delle Rose', margin, 28);
+      doc.text('Hotel Boutique', margin, 28);
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);

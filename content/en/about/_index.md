@@ -1,4 +1,4 @@
 ---
 title: "About — Our Story"
-description: "The story of Corte delle Rose — a farmhouse turned boutique hotel in Lombardy, run by the Ferretti family since 1987."
+description: "The story of Hotel Boutique — a farmhouse turned boutique hotel in Lombardy, run by the Ferretti family since 1987."
 ---

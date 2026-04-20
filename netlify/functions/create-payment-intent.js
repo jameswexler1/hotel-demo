@@ -61,7 +61,7 @@ exports.handler = async function (event) {
         amount:            String(totalCents),
         currency:          'eur',
         receipt_email:     email,
-        description:       `Corte delle Rose — ${safeRoomName} (${checkin} → ${checkout})`,
+        description:       `Hotel Boutique — ${safeRoomName} (${checkin} → ${checkout})`,
         'metadata[bookingRef]':   bookingRef,
         'metadata[roomId]':       roomId,
         'metadata[roomName]':     safeRoomName,

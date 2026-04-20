@@ -64,7 +64,7 @@ summaryLength                   = 30
   languageName = "English"
   languageCode = "en"
   weight       = 1
-  title        = "Corte delle Rose — Boutique Hotel, Lombardy"
+  title        = "Boutique Hotel - Lombardy"
   [languages.en.params]
     description = "A romantic boutique hotel nestled in the Lombardy countryside. Five beautifully appointed rooms, rose gardens, and timeless Italian hospitality near Brescia."
 
@@ -100,7 +100,7 @@ summaryLength                   = 30
   languageName = "Italiano"
   languageCode = "it"
   weight       = 2
-  title        = "Corte delle Rose — Hotel Boutique, Lombardia"
+  title        = "Boutique Hotel — Hotel Boutique, Lombardia"
   [languages.it.params]
     description = "Un romantico hotel boutique immerso nella campagna lombarda. Cinque camere curate, giardini di rose e autentica ospitalità italiana vicino a Brescia."
 
@@ -136,7 +136,7 @@ summaryLength                   = 30
   languageName = "Français"
   languageCode = "fr"
   weight       = 3
-  title        = "Corte delle Rose — Hôtel Boutique, Lombardie"
+  title        = "Boutique Hotel — Lombardie"
   [languages.fr.params]
     description = "Un charmant hôtel boutique niché dans la campagne lombarde. Cinq chambres raffinées, jardins de roses et hospitalité italienne intemporelle près de Brescia."
 
@@ -172,7 +172,7 @@ summaryLength                   = 30
   languageName = "Deutsch"
   languageCode = "de"
   weight       = 4
-  title        = "Corte delle Rose — Boutiquehotel, Lombardei"
+  title        = "Boutique Hotel — Boutiquehotel, Lombardei"
   [languages.de.params]
     description = "Ein romantisches Boutiquehotel in der lombardischen Landschaft. Fünf liebevoll eingerichtete Zimmer, Rosengärten und zeitlose italienische Gastfreundschaft nahe Brescia."
 
@@ -253,7 +253,7 @@ summaryLength                   = 30
   mapEmbed   = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22393!2d10.0!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDMwJzAwLjAiTiAxMMKwMDAnMDAuMCJF!5e0!3m2!1sen!2sit!4v1"
 
   # ── Testimonial (change without touching templates) ────────
-  testimonialQuote  = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Corte delle Rose is everything we had forgotten travel could be."
+  testimonialQuote  = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Boutique Hotel is everything we had forgotten travel could be."
   testimonialAuthor = "— Sophie & Marc, Paris"
 
   # ── Reception hours ────────────────────────────────────────

@@ -48,7 +48,7 @@ other = "Welcome"
 [intro_title]
 other = "A Courtyard Born\nFrom Roses"
 [intro_body]
-other = "Hidden behind stone walls draped in climbing roses, Corte delle Rose has sheltered travellers since 1987. Our five rooms blend centuries-old architecture with discreet modern comfort — each one different, each one a private world."
+other = "Hidden behind stone walls draped in climbing roses, Hotel Boutique has sheltered travellers since 1987. Our five rooms blend centuries-old architecture with discreet modern comfort — each one different, each one a private world."
 [our_story]
 other = "Our Story"
 [read_our_story]
@@ -77,7 +77,7 @@ other = "Our Story"
 [about_title]
 other = "Thirty-Seven Years of\nItalian Hospitality"
 [about_body_1]
-other = "Corte delle Rose began as a farmhouse — a corte, in the Lombard dialect — belonging to the Ferretti family. When Maria and Luca Ferretti opened their doors to guests in 1987, they asked a single question: how would we want to be welcomed?"
+other = "Hotel Boutique began as a farmhouse — a corte, in the Lombard dialect — belonging to the Ferretti family. When Maria and Luca Ferretti opened their doors to guests in 1987, they asked a single question: how would we want to be welcomed?"
 [about_body_2]
 other = "The answer still guides us. Fresh flowers from the garden in every room. Breakfast served when you wake, not when we decide. An unhurried pace. And always, the roses."
 
@@ -101,7 +101,7 @@ other = "Weekly cooking classes with our resident cook, Maria. Handmade pasta, r
 
 # Testimonial
 [testimonial_quote]
-other = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Corte delle Rose is everything we had forgotten travel could be."
+other = "We arrived for two nights and stayed for five. The roses, the silence, the extraordinary kindness of the Ferretti family — Hotel Boutique is everything we had forgotten travel could be."
 [testimonial_author]
 other = "— Sophie & Marc, Paris"
 
@@ -145,7 +145,7 @@ other = "Book this experience"
 [gallery_title]
 other = "Gallery"
 [gallery_subtitle]
-other = "A portrait of Corte delle Rose through the seasons."
+other = "A portrait of Hotel Boutique through the seasons."
 
 # About
 [about_page_title]
@@ -233,4 +233,4 @@ other = "Cookie Policy"
 [footer_vat]
 other = "P. IVA {{ .Site.Params.vatNumber }}"
 [footer_copy]
-other = "© 2025 Corte delle Rose. All rights reserved."
+other = "© 2025 Hotel Boutique. All rights reserved."

@@ -41,7 +41,7 @@ other = "Bienvenue"
 [intro_title]
 other = "Une Cour Née\ndes Roses"
 [intro_body]
-other = "Cachée derrière des murs de pierre recouverts de rosiers grimpants, la Corte delle Rose accueille les voyageurs depuis 1987. Nos cinq chambres allient une architecture séculaire à un confort moderne discret — chacune différente, chacune un monde à part entière."
+other = "Cachée derrière des murs de pierre recouverts de rosiers grimpants, la Hotel Boutique accueille les voyageurs depuis 1987. Nos cinq chambres allient une architecture séculaire à un confort moderne discret — chacune différente, chacune un monde à part entière."
 [our_story]
 other = "Notre Histoire"
 [read_our_story]
@@ -67,7 +67,7 @@ other = "Notre Histoire"
 [about_title]
 other = "Trente-Sept Ans\nd'Hospitalité Italienne"
 [about_body_1]
-other = "La Corte delle Rose a commencé comme une ferme — une corte, en dialecte lombard — appartenant à la famille Ferretti. Lorsque Maria et Luca Ferretti ont ouvert leurs portes aux voyageurs en 1987, ils se sont posé une seule question : comment voudrions-nous être accueillis ?"
+other = "La Hotel Boutique a commencé comme une ferme — une corte, en dialecte lombard — appartenant à la famille Ferretti. Lorsque Maria et Luca Ferretti ont ouvert leurs portes aux voyageurs en 1987, ils se sont posé une seule question : comment voudrions-nous être accueillis ?"
 [about_body_2]
 other = "La réponse nous guide encore. Des fleurs fraîches du jardin dans chaque chambre. Le petit-déjeuner servi quand vous vous réveillez, pas quand nous le décidons. Un rythme sans hâte. Et toujours, les roses."
 [usp_1_title]
@@ -87,7 +87,7 @@ other = "Cuisine de Nonna"
 [usp_4_desc]
 other = "Cours de cuisine hebdomadaires avec notre cuisinière Maria. Pâtes maison, risotto et recettes de saison."
 [testimonial_quote]
-other = "Nous sommes arrivés pour deux nuits et sommes restés cinq. Les roses, le silence, la gentillesse extraordinaire de la famille Ferretti — Corte delle Rose est tout ce que nous avions oublié que le voyage pouvait être."
+other = "Nous sommes arrivés pour deux nuits et sommes restés cinq. Les roses, le silence, la gentillesse extraordinaire de la famille Ferretti — Hotel Boutique est tout ce que nous avions oublié que le voyage pouvait être."
 [testimonial_author]
 other = "— Sophie & Marc, Paris"
 [cta_title]
@@ -123,7 +123,7 @@ other = "Réserver cette expérience"
 [gallery_title]
 other = "Galerie"
 [gallery_subtitle]
-other = "Un portrait de la Corte delle Rose à travers les saisons."
+other = "Un portrait de la Hotel Boutique à travers les saisons."
 [about_page_title]
 other = "Notre Histoire"
 [about_page_subtitle]
@@ -203,4 +203,4 @@ other = "Politique de cookies"
 [footer_vat]
 other = "P. IVA {{ .Site.Params.vatNumber }}"
 [footer_copy]
-other = "© 2025 Corte delle Rose. Tous droits réservés."
+other = "© 2025 Hotel Boutique. Tous droits réservés."

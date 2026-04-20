@@ -1,4 +1,4 @@
 ---
 title: "Gallery"
-description: "Photography of Corte delle Rose — rooms, gardens, countryside, and the seasons of Lombardy."
+description: "Photography of Hotel Boutique — rooms, gardens, countryside, and the seasons of Lombardy."
 ---

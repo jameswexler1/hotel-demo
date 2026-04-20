@@ -111,12 +111,12 @@ exports.handler = async function (event) {
   <div style="max-width:600px;margin:40px auto;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.07)">
     <div style="background:#2D3B2C;padding:40px 40px 32px;text-align:center">
       <p style="margin:0 0 4px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C9846E">BOOKING CONFIRMED</p>
-      <h1 style="margin:0;font-size:28px;font-weight:300;font-style:italic;color:#F7F1E8">Corte delle Rose</h1>
+      <h1 style="margin:0;font-size:28px;font-weight:300;font-style:italic;color:#F7F1E8">Hotel Boutique</h1>
     </div>
     <div style="background:#C9846E;height:4px"></div>
     <div style="padding:40px">
       <p style="font-size:16px;color:#4A5240;line-height:1.7">Dear ${guestName},</p>
-      <p style="color:#4A5240;line-height:1.7">Your reservation has been confirmed. We look forward to welcoming you to Corte delle Rose.</p>
+      <p style="color:#4A5240;line-height:1.7">Your reservation has been confirmed. We look forward to welcoming you to Hotel Boutique.</p>
       <div style="background:#F7F1E8;border-radius:4px;padding:24px;margin:28px 0">
         <table style="width:100%;border-collapse:collapse;font-size:14px">
           <tr><td style="padding:8px 0;color:#9A9186;letter-spacing:1px;font-size:11px;text-transform:uppercase">Booking Ref</td><td style="padding:8px 0;color:#1C1E19;font-weight:bold;text-align:right">${ref}</td></tr>
@@ -144,7 +144,7 @@ exports.handler = async function (event) {
 <p><strong>Total:</strong> ${totalEur}</p>`;
 
   const emails = [
-    { to: guestEmail, subject: `Booking confirmed — ${ref} — Corte delle Rose`, html: guestHtml },
+    { to: guestEmail, subject: `Booking confirmed — ${ref} — Hotel Boutique`, html: guestHtml },
     { to: HOTEL_EMAIL, subject: `New booking ${ref}: ${guestName} · ${roomName} · ${checkin}`, html: hotelHtml }
   ];
 
@@ -153,7 +153,7 @@ exports.handler = async function (event) {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: `Corte delle Rose <${FROM_EMAIL}>`,
+        from: `Hotel Boutique <${FROM_EMAIL}>`,
         to:   mail.to,
         subject: mail.subject,
         html:    mail.html

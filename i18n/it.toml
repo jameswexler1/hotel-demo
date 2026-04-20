@@ -41,7 +41,7 @@ other = "Benvenuti"
 [intro_title]
 other = "Un Cortile Nato\ndalle Rose"
 [intro_body]
-other = "Nascosta dietro muri di pietra ricoperti di rose rampicanti, la Corte delle Rose accoglie i viaggiatori dal 1987. Le nostre cinque camere uniscono l'architettura secolare a un comfort moderno e discreto — ognuna diversa, ognuna un mondo privato."
+other = "Nascosta dietro muri di pietra ricoperti di rose rampicanti, la Hotel Boutique accoglie i viaggiatori dal 1987. Le nostre cinque camere uniscono l'architettura secolare a un comfort moderno e discreto — ognuna diversa, ognuna un mondo privato."
 [our_story]
 other = "La Nostra Storia"
 [read_our_story]
@@ -67,7 +67,7 @@ other = "La Nostra Storia"
 [about_title]
 other = "Trentasette Anni di\nOspitalità Italiana"
 [about_body_1]
-other = "La Corte delle Rose nacque come cascina — una corte, nel dialetto lombardo — di proprietà della famiglia Ferretti. Quando Maria e Luca Ferretti aprirono le porte agli ospiti nel 1987, si posero una sola domanda: come vorremmo essere accolti?"
+other = "La Hotel Boutique nacque come cascina — una corte, nel dialetto lombardo — di proprietà della famiglia Ferretti. Quando Maria e Luca Ferretti aprirono le porte agli ospiti nel 1987, si posero una sola domanda: come vorremmo essere accolti?"
 [about_body_2]
 other = "La risposta ci guida ancora oggi. Fiori freschi del giardino in ogni camera. Colazione servita quando ci si sveglia, non quando decidiamo noi. Un ritmo senza fretta. E sempre, le rose."
 [usp_1_title]
@@ -87,7 +87,7 @@ other = "Cucina di Nonna"
 [usp_4_desc]
 other = "Corsi di cucina settimanali con la nostra cuoca Maria. Pasta fatta a mano, risotti e ricette stagionali."
 [testimonial_quote]
-other = "Siamo arrivati per due notti e ci siamo fermati cinque. Le rose, il silenzio, la straordinaria gentilezza della famiglia Ferretti — Corte delle Rose è tutto ciò che avevamo dimenticato potesse essere un viaggio."
+other = "Siamo arrivati per due notti e ci siamo fermati cinque. Le rose, il silenzio, la straordinaria gentilezza della famiglia Ferretti — Hotel Boutique è tutto ciò che avevamo dimenticato potesse essere un viaggio."
 [testimonial_author]
 other = "— Sophie & Marc, Parigi"
 [cta_title]
@@ -123,7 +123,7 @@ other = "Prenota questa esperienza"
 [gallery_title]
 other = "Galleria"
 [gallery_subtitle]
-other = "Un ritratto della Corte delle Rose attraverso le stagioni."
+other = "Un ritratto della Hotel Boutique attraverso le stagioni."
 [about_page_title]
 other = "La Nostra Storia"
 [about_page_subtitle]
@@ -203,4 +203,4 @@ other = "Cookie Policy"
 [footer_vat]
 other = "P. IVA {{ .Site.Params.vatNumber }}"
 [footer_copy]
-other = "© 2025 Corte delle Rose. Tutti i diritti riservati."
+other = "© 2025 Hotel Boutique. Tutti i diritti riservati."

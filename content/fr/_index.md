@@ -1,3 +1,3 @@
 ---
-title: "Corte delle Rose"
+title: "Hotel Boutique"
 ---
